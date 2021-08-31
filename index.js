@@ -15,8 +15,8 @@ app.use(express.json({ limit: '30mb' }));
 app.use(express.urlencoded({ limit: '30mb' }));
 
 app.get('/', (req,res) => {
-    res.send('Hello to memories API')
-})
+    res.send('Hello to memories API');
+});
 
 app.use('/posts', postRoutes)//middleware, rutas posts comenzaran con ese prefijo
 
