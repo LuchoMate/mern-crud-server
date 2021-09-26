@@ -6,6 +6,8 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import postRoutes from './routes/posts.js'
+import userRoutes from './routes/users.js'
+
 
 const app = express()//se inicia la app como un metodo de express
 dotenv.config()
@@ -19,9 +21,10 @@ app.get('/', (req,res) => {
 });
 
 app.use('/posts', postRoutes)//middleware, rutas posts comenzaran con ese prefijo
+app.use('/users', userRoutes)
 
 const CONNECTION_URL = "mongodb+srv://admin1:vbnm1914@cluster0.46hc8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})//evitar warnings
 .then(()=> app.listen(PORT, () => console.log(`Servidor en ${PORT}`)))
